@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DigorTrans - Логістична компанія | Вантажні перевезення</title>
+    <title>DGT - Логістична компанія | Вантажні перевезення</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -134,7 +134,7 @@
         .about {
             background: 
                 linear-gradient(rgba(255, 255, 255, 0.9), rgba(255, 255, 255, 0.9)),
-                url('about-bg.jpeg') no-repeat center center/cover;
+                url('about-bg.jpg') no-repeat center center/cover;
             padding: 80px 20px;
             text-align: center;
         }
@@ -391,9 +391,7 @@
             box-shadow: 0 3px 10px rgba(0, 0, 0, 0.2);
         }
         
-        .messenger-icons a.viber { background: #7360F2; }
         .messenger-icons a.telegram { background: #0088cc; }
-        .messenger-icons a.whatsapp { background: #25D366; }
         .messenger-icons a.email { background: #d44638; }
         
         .copyright {
@@ -452,7 +450,7 @@
     <!-- Шапка з логотипом і контактами -->
     <header class="header">
         <div class="logo-container">
-            <img src="logo.jpg" alt="DigorTrans Логістика" class="logo">
+            <img src="logo.jpg" alt="DGT Логістика" class="logo">
         </div>
         
         <div class="header-contacts">
@@ -478,10 +476,10 @@
     
     <!-- Про компанію -->
     <section class="about">
-        <h2>Логістична компанія DigorTrans</h2>
+        <h2>Логістична компанія DGT</h2>
         
         <div class="about-text">
-            <p>Логістична компанія «DigorTrans» спеціалізується на вантажних перевезеннях по Україні та країнах Європи. Наші основні цінності - це пунктуальність, безпека та відповідальність.</p>
+            <p>Логістична компанія «DGT» спеціалізується на вантажних перевезеннях по Україні та країнах Європи. Наші основні цінності - це пунктуальність, безпека та відповідальність.</p>
             
             <p>Ми пропонуємо комплексні логістичні рішення для бізнесу та приватних клієнтів, гарантуючи збереження цілісності вашого вантажу та дотримання термінів доставки.</p>
         </div>
@@ -501,7 +499,7 @@
             </div>
             <div class="feature-item">
                 <h3>Міжнародні перевезення</h3>
-                <p>Досвід роботи з країнами ЄС</p>
+                <p>Досвід роботи з країнами ЄС та СНД</p>
             </div>
         </div>
         
@@ -549,6 +547,16 @@
                 <div class="form-group">
                     <label for="to">Куди доставити вантаж</label>
                     <input type="text" id="to" placeholder="Наприклад: Польща, Варшава" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customs-clearance">Місце замитнення</label>
+                    <input type="text" id="customs-clearance" placeholder="Наприклад: Коротця, Польща" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="customs-release">Місце розмитнення</label>
+                    <input type="text" id="customs-release" placeholder="Наприклад: Ягодин, Україна" required>
                 </div>
                 
                 <div class="form-group">
@@ -604,14 +612,8 @@
                 </div>
                 
                 <div class="messenger-icons">
-                    <a href="viber://chat?number=+380980332520" class="viber" title="Viber">
-                        <i class="fab fa-viber"></i>
-                    </a>
                     <a href="https://t.me/+380980332520" class="telegram" title="Telegram">
                         <i class="fab fa-telegram"></i>
-                    </a>
-                    <a href="https://wa.me/380980332520" class="whatsapp" title="WhatsApp">
-                        <i class="fab fa-whatsapp"></i>
                     </a>
                     <a href="mailto:digortrans1@gmail.com" class="email" title="Email">
                         <i class="fas fa-envelope"></i>
@@ -621,7 +623,7 @@
         </div>
         
         <div class="copyright">
-            © 2025 DigorTrans. Всі права захищені
+            © 2023 DGT. Всі права захищені
         </div>
     </footer>
 
@@ -632,7 +634,7 @@
             e.target.value = !x[2] ? x[1] : '+380 (' + x[2] + ') ' + x[3] + (x[4] ? ' ' + x[4] : '') + (x[5] ? ' ' + x[5] : '');
         });
         
-        // Відправка форми з повідомленням у Telegram/Viber
+        // Відправка форми з повідомленням у Telegram
         document.getElementById('delivery-form').addEventListener('submit', function(e) {
             e.preventDefault();
             
@@ -640,6 +642,8 @@
             const formData = {
                 from: document.getElementById('from').value,
                 to: document.getElementById('to').value,
+                customsClearance: document.getElementById('customs-clearance').value,
+                customsRelease: document.getElementById('customs-release').value,
                 name: document.getElementById('name').value,
                 phone: document.getElementById('phone').value,
                 currency: document.querySelector('input[name="currency"]:checked').value
@@ -650,19 +654,27 @@
                            `Ім'я: ${formData.name}\n` +
                            `Телефон: ${formData.phone}\n` +
                            `Маршрут: ${formData.from} → ${formData.to}\n` +
+                           `Місце замитнення: ${formData.customsClearance}\n` +
+                           `Місце розмитнення: ${formData.customsRelease}\n` +
                            `Валюта: ${formData.currency}`;
             
-            // Відправляємо в Telegram (замініть на свої дані)
+            // Ваші дані Telegram бота
             const telegramBotToken = '8173585823:AAEnyk3CHJcQQ0nFFTmrkJ4FNGH-PLUuES4';
             const telegramChatId = '6139777210';
-            fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&text=${encodeURIComponent(message)}`);
             
-            // Альтернатива для Viber
-            window.open(`viber://forward?text=${encodeURIComponent(message)}`);
-            
-            // Повідомлення користувачу
-            alert('Дякуємо за заявку! Наш менеджер зв\'яжеться з вами найближчим часом.');
-            this.reset();
+            // Відправляємо в Telegram
+            fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&text=${encodeURIComponent(message)}`)
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Помилка відправки повідомлення');
+                    }
+                    alert('Дякуємо за заявку! Наш менеджер зв\'яжеться з вами найближчим часом.');
+                    document.getElementById('delivery-form').reset();
+                })
+                .catch(error => {
+                    console.error('Помилка:', error);
+                    alert('Сталася помилка при відправці форми. Будь ласка, спробуйте ще раз або зв\'яжіться з нами іншим способом.');
+                });
         });
 
         // Плавна прокрутка до форми при натисканні кнопки "Замовити"
