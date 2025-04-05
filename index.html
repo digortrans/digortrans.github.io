@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>DGT - Логістична компанія | Вантажні перевезення</title>
+    <title>DigorTrans - Логістична компанія | Міжнародні та внутрішні вантажні перевезення</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
@@ -476,10 +476,10 @@
     
     <!-- Про компанію -->
     <section class="about">
-        <h2>Логістична компанія DGT</h2>
+        <h2>Логістична компанія DsgorTrans</h2>
         
         <div class="about-text">
-            <p>Логістична компанія «DGT» спеціалізується на вантажних перевезеннях по Україні та країнах Європи. Наші основні цінності - це пунктуальність, безпека та відповідальність.</p>
+            <p>Логістична компанія «DigorTrans» спеціалізується на вантажних перевезеннях по Україні та країнах Європи. Наші основні цінності - це пунктуальність, безпека та відповідальність.</p>
             
             <p>Ми пропонуємо комплексні логістичні рішення для бізнесу та приватних клієнтів, гарантуючи збереження цілісності вашого вантажу та дотримання термінів доставки.</p>
         </div>
@@ -487,7 +487,7 @@
         <div class="features">
             <div class="feature-item">
                 <h3>Швидка доставка</h3>
-                <p>Оптимальні маршрути та сучасний автопарк дозволяють скоротити час перевезення</p>
+                <p>Оптимальні маршрути та власний сучасний автопарк дозволяють скоротити час перевезення</p>
             </div>
             <div class="feature-item">
                 <h3>Страхування вантажу</h3>
@@ -623,7 +623,7 @@
         </div>
         
         <div class="copyright">
-            © 2023 DGT. Всі права захищені
+            © 2025 DigorTrans. Всі права захищені
         </div>
     </footer>
 
@@ -635,46 +635,63 @@
         });
         
         // Відправка форми з повідомленням у Telegram
-        document.getElementById('delivery-form').addEventListener('submit', function(e) {
+        document.getElementById('delivery-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            // Збираємо дані форми
-            const formData = {
-                from: document.getElementById('from').value,
-                to: document.getElementById('to').value,
-                customsClearance: document.getElementById('customs-clearance').value,
-                customsRelease: document.getElementById('customs-release').value,
-                name: document.getElementById('name').value,
-                phone: document.getElementById('phone').value,
-                currency: document.querySelector('input[name="currency"]:checked').value
-            };
-            
-            // Формуємо повідомлення
-            const message = `Нова заявка на розрахунок:\n\n` +
-                           `Ім'я: ${formData.name}\n` +
-                           `Телефон: ${formData.phone}\n` +
-                           `Маршрут: ${formData.from} → ${formData.to}\n` +
-                           `Місце замитнення: ${formData.customsClearance}\n` +
-                           `Місце розмитнення: ${formData.customsRelease}\n` +
-                           `Валюта: ${formData.currency}`;
-            
-            // Ваші дані Telegram бота
-            const telegramBotToken = '8173585823:AAEnyk3CHJcQQ0nFFTmrkJ4FNGH-PLUuES4';
-            const telegramChatId = '6139777210';
-            
-            // Відправляємо в Telegram
-            fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&text=${encodeURIComponent(message)}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Помилка відправки повідомлення');
-                    }
-                    alert('Дякуємо за заявку! Наш менеджер зв\'яжеться з вами найближчим часом.');
-                    document.getElementById('delivery-form').reset();
-                })
-                .catch(error => {
-                    console.error('Помилка:', error);
-                    alert('Сталася помилка при відправці форми. Будь ласка, спробуйте ще раз або зв\'яжіться з нами іншим способом.');
+            try {
+                // Збираємо дані форми
+                const formData = {
+                    from: document.getElementById('from').value,
+                    to: document.getElementById('to').value,
+                    customsClearance: document.getElementById('customs-clearance').value,
+                    customsRelease: document.getElementById('customs-release').value,
+                    name: document.getElementById('name').value,
+                    phone: document.getElementById('phone').value,
+                    currency: document.querySelector('input[name="currency"]:checked').value
+                };
+                
+                // Формуємо повідомлення
+                const message = `Нова заявка на розрахунок:\n\n` +
+                               `Ім'я: ${formData.name}\n` +
+                               `Телефон: ${formData.phone}\n` +
+                               `Маршрут: ${formData.from} → ${formData.to}\n` +
+                               `Митниця: ${formData.customsClearance} → ${formData.customsRelease}\n` +
+                               `Валюта: ${formData.currency}`;
+                
+                // Ваші дані Telegram бота
+                const botToken = '8173585823:AAEnyk3CHJcQQ0nFFTmrkJ4FNGH-PLUuES4';
+                const chatId = '6139777210';
+                const url = `https://api.telegram.org/bot${botToken}/sendMessage`;
+                
+                // Відправляємо дані
+                const response = await fetch(url, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        chat_id: chatId,
+                        text: message,
+                        parse_mode: 'HTML'
+                    })
                 });
+                
+                if (!response.ok) {
+                    throw new Error('Помилка відправки: ' + response.status);
+                }
+                
+                const result = await response.json();
+                if (!result.ok) {
+                    throw new Error('Telegram API помилка: ' + result.description);
+                }
+                
+                alert('Дякуємо за заявку! Наш менеджер зв\'яжеться з вами найближчим часом.');
+                this.reset();
+                
+            } catch (error) {
+                console.error('Помилка:', error);
+                alert('Сталася помилка при відправці форми. Будь ласка, зв\'яжіться з нами по телефону: +380980332520');
+            }
         });
 
         // Плавна прокрутка до форми при натисканні кнопки "Замовити"
