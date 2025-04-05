@@ -653,8 +653,8 @@
                            `Валюта: ${formData.currency}`;
             
             // Відправляємо в Telegram (замініть на свої дані)
-            const telegramBotToken = 'ВАШ_TELEGRAM_BOT_TOKEN';
-            const telegramChatId = 'ВАШ_CHAT_ID';
+            const telegramBotToken = '8173585823:AAEnyk3CHJcQQ0nFFTmrkJ4FNGH-PLUuES4';
+            const telegramChatId = '6139777210';
             fetch(`https://api.telegram.org/bot${telegramBotToken}/sendMessage?chat_id=${telegramChatId}&text=${encodeURIComponent(message)}`);
             
             // Альтернатива для Viber
