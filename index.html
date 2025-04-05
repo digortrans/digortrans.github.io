@@ -4,7 +4,36 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>DigorTrans - Логістична компанія | Міжнародні та внутрішні вантажні перевезення</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXXX');
+    </script>
+    
+    <!-- Meta Pixel Code -->
+    <script>
+        !function(f,b,e,v,n,t,s)
+        {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+        n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+        if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+        n.queue=[];t=b.createElement(e);t.async=!0;
+        t.src=v;s=b.getElementsByTagName(e)[0];
+        s.parentNode.insertBefore(t,s)}(window, document,'script',
+        'https://connect.facebook.net/en_US/fbevents.js');
+        fbq('init', 'XXXXXXXXXXXXXXX');
+        fbq('track', 'PageView');
+    </script>
+    <noscript><img height="1" width="1" style="display:none"
+        src="https://www.facebook.com/tr?id=XXXXXXXXXXXXXXX&ev=PageView&noscript=1"
+    /></noscript>
+    <!-- End Meta Pixel Code -->
+    
     <style>
         :root {
             --primary: #2c3e50;
@@ -290,6 +319,52 @@
             text-align: center;
         }
         
+        /* Модальне вікно */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            overflow: auto;
+        }
+        
+        .modal-content {
+            background-color: var(--white);
+            margin: 15% auto;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 500px;
+            width: 90%;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            position: relative;
+            animation: modalopen 0.5s;
+        }
+        
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+        
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            font-size: 1.5rem;
+            color: var(--dark);
+            cursor: pointer;
+        }
+        
+        .modal-icon {
+            font-size: 3rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
         /* Футер */
         footer {
             background: var(--dark);
@@ -392,6 +467,8 @@
         }
         
         .messenger-icons a.telegram { background: #0088cc; }
+        .messenger-icons a.viber { background: #7360F2; }
+        .messenger-icons a.whatsapp { background: #25D366; }
         .messenger-icons a.email { background: #d44638; }
         
         .copyright {
@@ -442,6 +519,10 @@
             
             .footer-container {
                 grid-template-columns: 1fr;
+            }
+            
+            .modal-content {
+                margin: 30% auto;
             }
         }
     </style>
@@ -540,6 +621,15 @@
                 </div>
                 
                 <div class="form-group">
+                    <label for="transport-type">Тип транспорту</label>
+                    <select id="transport-type" required>
+                        <option value="" disabled selected>Оберіть тип</option>
+                        <option value="tent">Тентований</option>
+                        <option value="grain">Зерновоз</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
                     <label for="from">Звідки забрати вантаж</label>
                     <input type="text" id="from" placeholder="Наприклад: Україна, Київ" required>
                 </div>
@@ -567,6 +657,7 @@
                 <div class="form-group">
                     <label for="phone">Номер телефону</label>
                     <input type="tel" id="phone" placeholder="+380 (__) ___ __ __" required>
+                    <small class="error-message" id="phone-error" style="color: red; display: none;">Будь ласка, введіть коректний номер телефону</small>
                 </div>
                 
                 <button type="submit" class="submit-btn">Розрахувати вартість</button>
@@ -615,6 +706,12 @@
                     <a href="https://t.me/+380980332520" class="telegram" title="Telegram">
                         <i class="fab fa-telegram"></i>
                     </a>
+                    <a href="viber://chat?number=+380980332520" class="viber" title="Viber">
+                        <i class="fab fa-viber"></i>
+                    </a>
+                    <a href="https://wa.me/380980332520" class="whatsapp" title="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
                     <a href="mailto:digortrans1@gmail.com" class="email" title="Email">
                         <i class="fas fa-envelope"></i>
                     </a>
@@ -627,6 +724,19 @@
         </div>
     </footer>
 
+    <!-- Модальне вікно успішної відправки -->
+    <div id="success-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <div class="modal-icon">
+                <i class="fas fa-check-circle"></i>
+            </div>
+            <h2>Дякуємо за заявку!</h2>
+            <p>Наш менеджер зв'яжеться з вами найближчим часом.</p>
+            <button class="btn" style="margin-top: 20px;" id="close-modal-btn">OK</button>
+        </div>
+    </div>
+
     <script>
         // Маска для телефону
         document.getElementById('phone').addEventListener('input', function (e) {
@@ -634,13 +744,51 @@
             e.target.value = !x[2] ? x[1] : '+380 (' + x[2] + ') ' + x[3] + (x[4] ? ' ' + x[4] : '') + (x[5] ? ' ' + x[5] : '');
         });
         
+        // Валідація телефону
+        function validatePhone(phone) {
+            const phoneRegex = /^\+380\s\(\d{2}\)\s\d{3}\s\d{2}\s\d{2}$/;
+            return phoneRegex.test(phone);
+        }
+        
+        // Модальне вікно
+        const modal = document.getElementById('success-modal');
+        const closeModal = document.querySelector('.close-modal');
+        const closeModalBtn = document.getElementById('close-modal-btn');
+        
+        closeModal.onclick = function() {
+            modal.style.display = 'none';
+        }
+        
+        closeModalBtn.onclick = function() {
+            modal.style.display = 'none';
+        }
+        
+        window.onclick = function(event) {
+            if (event.target == modal) {
+                modal.style.display = 'none';
+            }
+        }
+        
         // Відправка форми з повідомленням у Telegram
         document.getElementById('delivery-form').addEventListener('submit', async function(e) {
             e.preventDefault();
             
+            const phoneInput = document.getElementById('phone');
+            const phoneError = document.getElementById('phone-error');
+            
+            // Валідація телефону
+            if (!validatePhone(phoneInput.value)) {
+                phoneError.style.display = 'block';
+                phoneInput.focus();
+                return;
+            } else {
+                phoneError.style.display = 'none';
+            }
+            
             try {
                 // Збираємо дані форми
                 const formData = {
+                    transportType: document.getElementById('transport-type').value,
                     from: document.getElementById('from').value,
                     to: document.getElementById('to').value,
                     customsClearance: document.getElementById('customs-clearance').value,
@@ -650,10 +798,21 @@
                     currency: document.querySelector('input[name="currency"]:checked').value
                 };
                 
+                // Відправляємо подію в Google Analytics
+                gtag('event', 'form_submit', {
+                    'event_category': 'engagement',
+                    'event_label': 'Calculator Form'
+                });
+                
+                // Відправляємо подію в Facebook Pixel
+                fbq('track', 'Lead');
+                
                 // Формуємо повідомлення
+                const transportTypeText = formData.transportType === 'tent' ? 'Тентований' : 'Зерновоз';
                 const message = `Нова заявка на розрахунок:\n\n` +
                                `Ім'я: ${formData.name}\n` +
                                `Телефон: ${formData.phone}\n` +
+                               `Тип транспорту: ${transportTypeText}\n` +
                                `Маршрут: ${formData.from} → ${formData.to}\n` +
                                `Митниця: ${formData.customsClearance} → ${formData.customsRelease}\n` +
                                `Валюта: ${formData.currency}`;
@@ -685,7 +844,8 @@
                     throw new Error('Telegram API помилка: ' + result.description);
                 }
                 
-                alert('Дякуємо за заявку! Наш менеджер зв\'яжеться з вами найближчим часом.');
+                // Показуємо модальне вікно
+                modal.style.display = 'block';
                 this.reset();
                 
             } catch (error) {
