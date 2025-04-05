@@ -115,59 +115,71 @@
             padding: 80px 20px;
             max-width: 1200px;
             margin: 0 auto;
+            text-align: center;
         }
         
         .about h2 {
             font-size: 2.2rem;
             margin-bottom: 30px;
             color: var(--primary);
-            text-align: center;
         }
         
-        .about-content {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
+        .about-text {
+            max-width: 800px;
+            margin: 0 auto 40px;
+            text-align: center;
         }
         
         .about-text p {
             margin-bottom: 20px;
             font-size: 1.1rem;
+            line-height: 1.8;
         }
         
         .features {
             display: grid;
-            grid-template-columns: 1fr 1fr;
+            grid-template-columns: repeat(4, 1fr);
             gap: 20px;
-            margin-top: 30px;
+            margin-top: 50px;
         }
         
         .feature-item {
             background: var(--light);
-            padding: 20px;
-            border-radius: 5px;
-            border-left: 4px solid var(--accent);
+            padding: 25px;
+            border-radius: 10px;
+            border-top: 4px solid var(--accent);
+            text-align: center;
+        }
+        
+        .feature-item h3 {
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .feature-item p {
+            font-size: 1rem;
+            line-height: 1.6;
         }
         
         .stats {
             display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
+            justify-content: center;
+            margin-top: 70px;
             text-align: center;
             flex-wrap: wrap;
         }
         
         .stat-item {
-            flex: 1;
+            margin: 0 30px;
             min-width: 150px;
-            margin: 10px;
         }
         
         .stat-number {
-            font-size: 2rem;
+            font-size: 2.5rem;
             font-weight: bold;
             color: var(--accent);
+            margin-bottom: 10px;
         }
         
         /* Калькулятор */
@@ -219,6 +231,7 @@
         .currency-selector {
             display: flex;
             margin-bottom: 20px;
+            justify-content: center;
         }
         
         .currency-selector label {
@@ -368,10 +381,15 @@
         }
         
         /* Адаптивність */
+        @media (max-width: 992px) {
+            .features {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
         @media (max-width: 768px) {
             .hero {
-                height: 50vh;
-                background-size: 80%;
+                height: 60vh;
             }
             
             .hero h1 {
@@ -379,23 +397,20 @@
             }
             
             .hero p {
-                font-size: 1rem;
-            }
-            
-            .about-content {
-                grid-template-columns: 1fr;
+                font-size: 1.1rem;
             }
             
             .features {
                 grid-template-columns: 1fr;
             }
             
-            .footer-container {
-                grid-template-columns: 1fr;
+            .stat-item {
+                margin: 20px;
+                min-width: 120px;
             }
             
-            .stat-item {
-                min-width: 120px;
+            .footer-container {
+                grid-template-columns: 1fr;
             }
         }
     </style>
@@ -403,64 +418,82 @@
 <body>
     <!-- Перемикач мов -->
     <div class="language-switcher">
-        <button class="active">UA</button>
-        <button>EN</button>
+        <button class="active" onclick="changeLanguage('uk')">UA</button>
+        <button onclick="changeLanguage('en')">EN</button>
     </div>
 
     <!-- Герой-секція -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <h1>Вантажні перевезення по Україні та Європі</h1>
-            <p>Безпечна та надійна доставка вашого вантажу з гарантією цілісності</p>
-            <a href="#calculator" class="btn">Замовити ▾</a>
+            <h1 data-lang="uk">Вантажні перевезення по Україні та Європі</h1>
+            <h1 data-lang="en" style="display:none">Freight transportation in Ukraine and Europe</h1>
+            <p data-lang="uk">Безпечна та надійна доставка вашого вантажу з гарантією цілісності</p>
+            <p data-lang="en" style="display:none">Safe and reliable delivery of your cargo with integrity guarantee</p>
+            <a href="#calculator" class="btn" data-lang="uk">Замовити ▾</a>
+            <a href="#calculator" class="btn" data-lang="en" style="display:none">Order ▾</a>
         </div>
     </section>
     
     <!-- Про компанію -->
     <section class="about">
-        <h2>Логістична компанія DGT</h2>
-        <div class="about-content">
-            <div class="about-text">
-                <p>Логістична компанія «DGT» спеціалізується на вантажних перевезеннях по Україні та країнах Європи. Наші основні цінності - це пунктуальність, безпека та відповідальність.</p>
-                <p>Ми пропонуємо комплексні логістичні рішення для бізнесу та приватних клієнтів, гарантуючи збереження цілісності вашого вантажу та дотримання термінів доставки.</p>
-                
-                <div class="features">
-                    <div class="feature-item">
-                        <h3>Швидка доставка</h3>
-                        <p>Оптимальні маршрути та сучасний автопарк дозволяють скоротити час перевезення</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Страхування вантажу</h3>
-                        <p>Усі перевезення застраховані від пошкоджень та втрат</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Гнучкі умови</h3>
-                        <p>Індивідуальний підхід до кожного клієнта та різні варіанти оплати</p>
-                    </div>
-                    <div class="feature-item">
-                        <h3>Міжнародні перевезення</h3>
-                        <p>Досвід роботи з країнами ЄС та СНД</p>
-                    </div>
-                </div>
+        <h2 data-lang="uk">Логістична компанія DGT</h2>
+        <h2 data-lang="en" style="display:none">Logistics company DGT</h2>
+        
+        <div class="about-text">
+            <p data-lang="uk">Логістична компанія «DGT» спеціалізується на вантажних перевезеннях по Україні та країнах Європи. Наші основні цінності - це пунктуальність, безпека та відповідальність.</p>
+            <p data-lang="en" style="display:none">Logistics company "DGT" specializes in freight transportation in Ukraine and European countries. Our core values are punctuality, safety and responsibility.</p>
+            
+            <p data-lang="uk">Ми пропонуємо комплексні логістичні рішення для бізнесу та приватних клієнтів, гарантуючи збереження цілісності вашого вантажу та дотримання термінів доставки.</p>
+            <p data-lang="en" style="display:none">We offer comprehensive logistics solutions for businesses and private clients, guaranteeing the integrity of your cargo and compliance with delivery terms.</p>
+        </div>
+        
+        <div class="features">
+            <div class="feature-item">
+                <h3 data-lang="uk">Швидка доставка</h3>
+                <h3 data-lang="en" style="display:none">Fast delivery</h3>
+                <p data-lang="uk">Оптимальні маршрути та сучасний автопарк дозволяють скоротити час перевезення</p>
+                <p data-lang="en" style="display:none">Optimal routes and modern fleet reduce transportation time</p>
+            </div>
+            <div class="feature-item">
+                <h3 data-lang="uk">Страхування вантажу</h3>
+                <h3 data-lang="en" style="display:none">Cargo insurance</h3>
+                <p data-lang="uk">Усі перевезення застраховані від пошкоджень та втрат</p>
+                <p data-lang="en" style="display:none">All shipments are insured against damage and loss</p>
+            </div>
+            <div class="feature-item">
+                <h3 data-lang="uk">Гнучкі умови</h3>
+                <h3 data-lang="en" style="display:none">Flexible terms</h3>
+                <p data-lang="uk">Індивідуальний підхід до кожного клієнта та різні варіанти оплати</p>
+                <p data-lang="en" style="display:none">Individual approach to each client and various payment options</p>
+            </div>
+            <div class="feature-item">
+                <h3 data-lang="uk">Міжнародні перевезення</h3>
+                <h3 data-lang="en" style="display:none">International transportation</h3>
+                <p data-lang="uk">Досвід роботи з країнами ЄС та СНД</p>
+                <p data-lang="en" style="display:none">Experience working with EU and CIS countries</p>
             </div>
         </div>
         
         <div class="stats">
             <div class="stat-item">
                 <div class="stat-number">1500+</div>
-                <div>Задоволених клієнтів</div>
+                <div data-lang="uk">Задоволених клієнтів</div>
+                <div data-lang="en" style="display:none">Satisfied clients</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">50000+</div>
-                <div>Успішних перевезень</div>
+                <div data-lang="uk">Успішних перевезень</div>
+                <div data-lang="en" style="display:none">Successful shipments</div>
             </div>
             <div class="stat-item">
-                <div class="stat-number">5+</div>
-                <div>Років досвіду</div>
+                <div class="stat-number">50+</div>
+                <div data-lang="uk">Постійних партнерів</div>
+                <div data-lang="en" style="display:none">Regular partners</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">20+</div>
-                <div>Країн доставки</div>
+                <div data-lang="uk">Країн доставки</div>
+                <div data-lang="en" style="display:none">Delivery countries</div>
             </div>
         </div>
     </section>
@@ -468,43 +501,55 @@
     <!-- Калькулятор вартості -->
     <section class="calculator" id="calculator">
         <div class="calculator-container">
-            <h2>Розрахуйте вартість перевезення</h2>
-            <p class="subtitle">Залишіть заявку і наш менеджер зв'яжеться з вами</p>
+            <h2 data-lang="uk">Розрахуйте вартість перевезення</h2>
+            <h2 data-lang="en" style="display:none">Calculate shipping cost</h2>
+            <p class="subtitle" data-lang="uk">Залишіть заявку і наш менеджер зв'яжеться з вами</p>
+            <p class="subtitle" data-lang="en" style="display:none">Leave a request and our manager will contact you</p>
             
             <form id="delivery-form">
                 <div class="currency-selector">
                     <label>
-                        <input type="radio" name="currency" value="UAH" checked> Гривня (UAH)
+                        <input type="radio" name="currency" value="UAH" checked> 
+                        <span data-lang="uk">Гривня (UAH)</span>
+                        <span data-lang="en" style="display:none">Hryvnia (UAH)</span>
                     </label>
                     <label>
-                        <input type="radio" name="currency" value="EUR"> Євро (EUR)
+                        <input type="radio" name="currency" value="EUR"> 
+                        <span data-lang="uk">Євро (EUR)</span>
+                        <span data-lang="en" style="display:none">Euro (EUR)</span>
                     </label>
                 </div>
                 
                 <div class="form-group">
-                    <label for="from">Звідки забрати вантаж</label>
+                    <label for="from" data-lang="uk">Звідки забрати вантаж</label>
+                    <label for="from" data-lang="en" style="display:none">Pickup location</label>
                     <input type="text" id="from" placeholder="Наприклад: Україна, Київ" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="to">Куди доставити вантаж</label>
+                    <label for="to" data-lang="uk">Куди доставити вантаж</label>
+                    <label for="to" data-lang="en" style="display:none">Delivery destination</label>
                     <input type="text" id="to" placeholder="Наприклад: Польща, Варшава" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="name">Ваше ім'я</label>
+                    <label for="name" data-lang="uk">Ваше ім'я</label>
+                    <label for="name" data-lang="en" style="display:none">Your name</label>
                     <input type="text" id="name" placeholder="Як до вас звертатися?" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Номер телефону</label>
+                    <label for="phone" data-lang="uk">Номер телефону</label>
+                    <label for="phone" data-lang="en" style="display:none">Phone number</label>
                     <input type="tel" id="phone" placeholder="+380 (__) ___ __ __" required>
                 </div>
                 
-                <button type="submit" class="submit-btn">Розрахувати вартість</button>
+                <button type="submit" class="submit-btn" data-lang="uk">Розрахувати вартість</button>
+                <button type="submit" class="submit-btn" data-lang="en" style="display:none">Calculate cost</button>
                 
                 <div class="consent">
-                    Натискаючи кнопку, ви погоджуєтесь з обробкою персональних даних
+                    <span data-lang="uk">Натискаючи кнопку, ви погоджуєтесь з обробкою персональних даних</span>
+                    <span data-lang="en" style="display:none">By clicking the button, you agree to the processing of personal data</span>
                 </div>
             </form>
         </div>
@@ -515,21 +560,24 @@
         <div class="footer-container">
             <div class="footer-about">
                 <div class="footer-logo">DGT</div>
-                <p>Надійні вантажні перевезення по Україні та Європі</p>
+                <p data-lang="uk">Надійні вантажні перевезення по Україні та Європі</p>
+                <p data-lang="en" style="display:none">Reliable freight transportation in Ukraine and Europe</p>
             </div>
             
             <div class="footer-links">
-                <h3>Інформація</h3>
+                <h3 data-lang="uk">Інформація</h3>
+                <h3 data-lang="en" style="display:none">Information</h3>
                 <ul>
-                    <li><a href="#">Політика конфіденційності</a></li>
-                    <li><a href="#">Публічна оферта</a></li>
-                    <li><a href="#">Про компанію</a></li>
-                    <li><a href="#">Послуги</a></li>
+                    <li><a href="#" data-lang="uk">Політика конфіденційності</a><a href="#" data-lang="en" style="display:none">Privacy Policy</a></li>
+                    <li><a href="#" data-lang="uk">Публічна оферта</a><a href="#" data-lang="en" style="display:none">Public offer</a></li>
+                    <li><a href="#" data-lang="uk">Про компанію</a><a href="#" data-lang="en" style="display:none">About company</a></li>
+                    <li><a href="#" data-lang="uk">Послуги</a><a href="#" data-lang="en" style="display:none">Services</a></li>
                 </ul>
             </div>
             
             <div class="footer-contact">
-                <h3>Контакти</h3>
+                <h3 data-lang="uk">Контакти</h3>
+                <h3 data-lang="en" style="display:none">Contacts</h3>
                 <div class="contact-info">
                     <p>
                         <a href="tel:+380980332520">
@@ -561,16 +609,48 @@
         </div>
         
         <div class="copyright">
-            © 2023 DGT. Всі права захищені
+            <span data-lang="uk">© 2023 DGT. Всі права захищені</span>
+            <span data-lang="en" style="display:none">© 2023 DGT. All rights reserved</span>
         </div>
     </footer>
 
     <script>
+        // Функція зміни мови
+        function changeLanguage(lang) {
+            // Зміна активного стану кнопки
+            document.querySelectorAll('.language-switcher button').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.textContent === (lang === 'uk' ? 'UA' : 'EN')) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            // Показуємо/ховаємо елементи за мовою
+            document.querySelectorAll('[data-lang]').forEach(el => {
+                if (el.getAttribute('data-lang') === lang) {
+                    el.style.display = '';
+                } else {
+                    el.style.display = 'none';
+                }
+            });
+            
+            // Зберігаємо вибір мови
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        // Встановлюємо мову при завантаженні
+        document.addEventListener('DOMContentLoaded', function() {
+            const preferredLanguage = localStorage.getItem('preferredLanguage') || 'uk';
+            changeLanguage(preferredLanguage);
+        });
+
         // Плавна прокрутка до форми при натисканні кнопки "Замовити"
-        document.querySelector('a[href="#calculator"]').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
+        document.querySelectorAll('a[href="#calculator"]').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
             });
         });
 
@@ -583,17 +663,11 @@
         // Відправка форми
         document.getElementById('delivery-form').addEventListener('submit', function(e) {
             e.preventDefault();
-            alert('Дякуємо за заявку! Наш менеджер зв\'яжеться з вами найближчим часом.');
+            const lang = localStorage.getItem('preferredLanguage') || 'uk';
+            alert(lang === 'uk' 
+                ? 'Дякуємо за заявку! Наш менеджер зв\'яжеться з вами найближчим часом.' 
+                : 'Thank you for your request! Our manager will contact you shortly.');
             this.reset();
-        });
-        
-        // Перемикач мов (базовий функціонал)
-        document.querySelectorAll('.language-switcher button').forEach(button => {
-            button.addEventListener('click', function() {
-                document.querySelector('.language-switcher button.active').classList.remove('active');
-                this.classList.add('active');
-                // Тут можна додати логіку зміни мови
-            });
         });
     </script>
 </body>
