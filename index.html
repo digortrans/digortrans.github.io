@@ -280,6 +280,10 @@
             font-size: 1rem;
         }
         
+        .customs-fields {
+            display: none;
+        }
+        
         .currency-selector {
             display: flex;
             margin-bottom: 20px;
@@ -639,14 +643,16 @@
                     <input type="text" id="to" placeholder="Наприклад: Польща, Варшава" required>
                 </div>
                 
-                <div class="form-group">
-                    <label for="customs-clearance">Місце замитнення</label>
-                    <input type="text" id="customs-clearance" placeholder="Наприклад: Коротця, Польща" required>
-                </div>
-                
-                <div class="form-group">
-                    <label for="customs-release">Місце розмитнення</label>
-                    <input type="text" id="customs-release" placeholder="Наприклад: Ягодин, Україна" required>
+                <div id="customs-fields" class="customs-fields">
+                    <div class="form-group">
+                        <label for="customs-clearance">Місце замитнення</label>
+                        <input type="text" id="customs-clearance" placeholder="Наприклад: Коротця, Польща">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="customs-release">Місце розмитнення</label>
+                        <input type="text" id="customs-release" placeholder="Наприклад: Ягодин, Україна">
+                    </div>
                 </div>
                 
                 <div class="form-group">
@@ -700,7 +706,9 @@
                         </a>
                     </p>
                     <p>
-                        <i class="fas fa-map-marker-alt"></i> 09100, Київська область, м. Біла Церква
+                        <a href="https://maps.google.com/?q=09100, Київська область, м. Біла Церква" target="_blank">
+                            <i class="fas fa-map-marker-alt"></i> 09100, Київська область, м. Біла Церква
+                        </a>
                     </p>
                 </div>
                 
@@ -771,6 +779,20 @@
             }
         }
         
+        // Показ/приховування полів митниці залежно від типу транспорту
+        document.getElementById('transport-type').addEventListener('change', function() {
+            const customsFields = document.getElementById('customs-fields');
+            if (this.value === 'tent') {
+                customsFields.style.display = 'block';
+                document.getElementById('customs-clearance').setAttribute('required', '');
+                document.getElementById('customs-release').setAttribute('required', '');
+            } else {
+                customsFields.style.display = 'none';
+                document.getElementById('customs-clearance').removeAttribute('required');
+                document.getElementById('customs-release').removeAttribute('required');
+            }
+        });
+        
         // Відправка форми з повідомленням у Telegram
         document.getElementById('delivery-form').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -793,12 +815,16 @@
                     transportType: document.getElementById('transport-type').value,
                     from: document.getElementById('from').value,
                     to: document.getElementById('to').value,
-                    customsClearance: document.getElementById('customs-clearance').value,
-                    customsRelease: document.getElementById('customs-release').value,
                     name: document.getElementById('name').value,
                     phone: document.getElementById('phone').value,
                     currency: document.querySelector('input[name="currency"]:checked').value
                 };
+                
+                // Додаємо поля митниці тільки для тентованого транспорту
+                if (formData.transportType === 'tent') {
+                    formData.customsClearance = document.getElementById('customs-clearance').value;
+                    formData.customsRelease = document.getElementById('customs-release').value;
+                }
                 
                 // Відправляємо подію в Google Analytics
                 gtag('event', 'form_submit', {
@@ -811,13 +837,17 @@
                 
                 // Формуємо повідомлення
                 const transportTypeText = formData.transportType === 'tent' ? 'Тентований' : 'Зерновоз';
-                const message = `Нова заявка на розрахунок:\n\n` +
-                               `Ім'я: ${formData.name}\n` +
-                               `Телефон: ${formData.phone}\n` +
-                               `Тип транспорту: ${transportTypeText}\n` +
-                               `Маршрут: ${formData.from} → ${formData.to}\n` +
-                               `Митниця: ${formData.customsClearance} → ${formData.customsRelease}\n` +
-                               `Валюта: ${formData.currency}`;
+                let message = `Нова заявка на розрахунок:\n\n` +
+                             `Ім'я: ${formData.name}\n` +
+                             `Телефон: ${formData.phone}\n` +
+                             `Тип транспорту: ${transportTypeText}\n` +
+                             `Маршрут: ${formData.from} → ${formData.to}\n` +
+                             `Валюта: ${formData.currency}`;
+                
+                // Додаємо інформацію про митницю тільки для тентованого транспорту
+                if (formData.transportType === 'tent') {
+                    message += `\nМитниця: ${formData.customsClearance} → ${formData.customsRelease}`;
+                }
                 
                 // Ваші дані Telegram бота
                 const botToken = '8173585823:AAFOnsc5nGDVlO3T3WRhW4s-5MD8UmqX6Ok';
