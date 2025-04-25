@@ -288,16 +288,25 @@
             display: flex;
             margin-bottom: 20px;
             justify-content: center;
+            flex-wrap: wrap;
         }
         
         .currency-selector label {
             margin-right: 15px;
             display: flex;
             align-items: center;
+            margin-bottom: 10px;
         }
         
         .currency-selector input {
             margin-right: 5px;
+        }
+        
+        .country-flag {
+            width: 20px;
+            height: 15px;
+            margin-right: 5px;
+            vertical-align: middle;
         }
         
         .submit-btn {
@@ -474,6 +483,7 @@
         .messenger-icons a.viber { background: #7360F2; }
         .messenger-icons a.whatsapp { background: #25D366; }
         .messenger-icons a.email { background: #d44638; }
+        .messenger-icons a.tiktok { background: #000000; }
         
         .copyright {
             text-align: center;
@@ -527,6 +537,15 @@
             
             .modal-content {
                 margin: 30% auto;
+            }
+            
+            .calculator-container {
+                padding: 20px;
+            }
+            
+            .form-group input, .form-group select {
+                padding: 10px;
+                font-size: 0.9rem;
             }
         }
     </style>
@@ -617,11 +636,51 @@
             <form id="delivery-form">
                 <div class="currency-selector">
                     <label>
-                        <input type="radio" name="currency" value="UAH" checked> Гривня (UAH)
+                        <input type="radio" name="currency" value="UAH" checked> 
+                        <img src="https://flagcdn.com/w20/ua.png" class="country-flag" alt="Україна">
+                        Гривня (UAH)
                     </label>
                     <label>
-                        <input type="radio" name="currency" value="EUR"> Євро (EUR)
+                        <input type="radio" name="currency" value="EUR"> 
+                        <img src="https://flagcdn.com/w20/eu.png" class="country-flag" alt="Євро">
+                        Євро (EUR)
                     </label>
+                    <label>
+                        <input type="radio" name="currency" value="GBP"> 
+                        <img src="https://flagcdn.com/w20/gb.png" class="country-flag" alt="Великобританія">
+                        Фунт (GBP)
+                    </label>
+                    <label>
+                        <input type="radio" name="currency" value="USD"> 
+                        <img src="https://flagcdn.com/w20/us.png" class="country-flag" alt="США">
+                        Долар (USD)
+                    </label>
+                </div>
+                
+                <div class="form-group">
+                    <label for="language">Мова спілкування</label>
+                    <select id="language">
+                        <option value="ukrainian" selected>
+                            <img src="https://flagcdn.com/w20/ua.png" class="country-flag" alt="Україна">
+                            Українська
+                        </option>
+                        <option value="english">
+                            <img src="https://flagcdn.com/w20/gb.png" class="country-flag" alt="Великобританія">
+                            English
+                        </option>
+                        <option value="latvian">
+                            <img src="https://flagcdn.com/w20/lv.png" class="country-flag" alt="Латвія">
+                            Latviešu
+                        </option>
+                        <option value="lithuanian">
+                            <img src="https://flagcdn.com/w20/lt.png" class="country-flag" alt="Литва">
+                            Lietuvių
+                        </option>
+                        <option value="estonian">
+                            <img src="https://flagcdn.com/w20/ee.png" class="country-flag" alt="Естонія">
+                            Eesti
+                        </option>
+                    </select>
                 </div>
                 
                 <div class="form-group">
@@ -715,6 +774,9 @@
                 <div class="messenger-icons">
                     <a href="https://t.me/+380980332520" class="telegram" title="Telegram">
                         <i class="fab fa-telegram"></i>
+                    </a>
+                    <a href="https://www.tiktok.com/@digor_trans" class="tiktok" title="TikTok">
+                        <i class="fab fa-tiktok"></i>
                     </a>
                     <a href="viber://chat?number=+380980332520" class="viber" title="Viber">
                         <i class="fab fa-viber"></i>
@@ -817,7 +879,8 @@
                     to: document.getElementById('to').value,
                     name: document.getElementById('name').value,
                     phone: document.getElementById('phone').value,
-                    currency: document.querySelector('input[name="currency"]:checked').value
+                    currency: document.querySelector('input[name="currency"]:checked').value,
+                    language: document.getElementById('language').value
                 };
                 
                 // Додаємо поля митниці тільки для тентованого транспорту
@@ -840,6 +903,7 @@
                 let message = `Нова заявка на розрахунок:\n\n` +
                              `Ім'я: ${formData.name}\n` +
                              `Телефон: ${formData.phone}\n` +
+                             `Мова: ${formData.language}\n` +
                              `Тип транспорту: ${transportTypeText}\n` +
                              `Маршрут: ${formData.from} → ${formData.to}\n` +
                              `Валюта: ${formData.currency}`;
