@@ -103,6 +103,61 @@
             color: var(--accent);
         }
         
+        .language-selector {
+            position: relative;
+            display: inline-block;
+            margin-left: 20px;
+        }
+        
+        .language-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            padding: 5px 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
+        
+        .language-btn:hover {
+            background-color: rgba(0,0,0,0.1);
+        }
+        
+        .language-flag {
+            width: 20px;
+            height: 15px;
+            margin-right: 5px;
+        }
+        
+        .language-dropdown {
+            display: none;
+            position: absolute;
+            right: 0;
+            background-color: white;
+            min-width: 120px;
+            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+            z-index: 1;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+        
+        .language-dropdown a {
+            color: black;
+            padding: 8px 12px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+        }
+        
+        .language-dropdown a:hover {
+            background-color: #f1f1f1;
+        }
+        
+        .language-selector:hover .language-dropdown {
+            display: block;
+        }
+        
         /* Герой-секція */
         .hero {
             background: 
@@ -507,6 +562,11 @@
                 align-items: center;
                 margin-top: 15px;
             }
+            
+            .language-selector {
+                margin-left: 0;
+                margin-top: 15px;
+            }
         }
         
         @media (max-width: 768px) {
@@ -565,6 +625,34 @@
             <div class="contact-item">
                 <i class="fas fa-envelope"></i>
                 <a href="mailto:digortrans1@gmail.com">digortrans1@gmail.com</a>
+            </div>
+            <div class="language-selector">
+                <button class="language-btn">
+                    <img src="https://flagcdn.com/w20/ua.png" class="language-flag" alt="Україна">
+                    <span>UA</span>
+                </button>
+                <div class="language-dropdown">
+                    <a href="#" data-lang="uk">
+                        <img src="https://flagcdn.com/w20/ua.png" class="language-flag" alt="Україна">
+                        Українська
+                    </a>
+                    <a href="#" data-lang="en">
+                        <img src="https://flagcdn.com/w20/gb.png" class="language-flag" alt="Англія">
+                        English
+                    </a>
+                    <a href="#" data-lang="lv">
+                        <img src="https://flagcdn.com/w20/lv.png" class="language-flag" alt="Латвія">
+                        Latviešu
+                    </a>
+                    <a href="#" data-lang="lt">
+                        <img src="https://flagcdn.com/w20/lt.png" class="language-flag" alt="Литва">
+                        Lietuvių
+                    </a>
+                    <a href="#" data-lang="et">
+                        <img src="https://flagcdn.com/w20/ee.png" class="language-flag" alt="Естонія">
+                        Eesti
+                    </a>
+                </div>
             </div>
         </div>
     </header>
@@ -645,42 +733,6 @@
                         <img src="https://flagcdn.com/w20/eu.png" class="country-flag" alt="Євро">
                         Євро (EUR)
                     </label>
-                    <label>
-                        <input type="radio" name="currency" value="GBP"> 
-                        <img src="https://flagcdn.com/w20/gb.png" class="country-flag" alt="Великобританія">
-                        Фунт (GBP)
-                    </label>
-                    <label>
-                        <input type="radio" name="currency" value="USD"> 
-                        <img src="https://flagcdn.com/w20/us.png" class="country-flag" alt="США">
-                        Долар (USD)
-                    </label>
-                </div>
-                
-                <div class="form-group">
-                    <label for="language">Мова спілкування</label>
-                    <select id="language">
-                        <option value="ukrainian" selected>
-                            <img src="https://flagcdn.com/w20/ua.png" class="country-flag" alt="Україна">
-                            Українська
-                        </option>
-                        <option value="english">
-                            <img src="https://flagcdn.com/w20/gb.png" class="country-flag" alt="Великобританія">
-                            English
-                        </option>
-                        <option value="latvian">
-                            <img src="https://flagcdn.com/w20/lv.png" class="country-flag" alt="Латвія">
-                            Latviešu
-                        </option>
-                        <option value="lithuanian">
-                            <img src="https://flagcdn.com/w20/lt.png" class="country-flag" alt="Литва">
-                            Lietuvių
-                        </option>
-                        <option value="estonian">
-                            <img src="https://flagcdn.com/w20/ee.png" class="country-flag" alt="Естонія">
-                            Eesti
-                        </option>
-                    </select>
                 </div>
                 
                 <div class="form-group">
@@ -879,8 +931,7 @@
                     to: document.getElementById('to').value,
                     name: document.getElementById('name').value,
                     phone: document.getElementById('phone').value,
-                    currency: document.querySelector('input[name="currency"]:checked').value,
-                    language: document.getElementById('language').value
+                    currency: document.querySelector('input[name="currency"]:checked').value
                 };
                 
                 // Додаємо поля митниці тільки для тентованого транспорту
@@ -903,7 +954,6 @@
                 let message = `Нова заявка на розрахунок:\n\n` +
                              `Ім'я: ${formData.name}\n` +
                              `Телефон: ${formData.phone}\n` +
-                             `Мова: ${formData.language}\n` +
                              `Тип транспорту: ${transportTypeText}\n` +
                              `Маршрут: ${formData.from} → ${formData.to}\n` +
                              `Валюта: ${formData.currency}`;
@@ -950,13 +1000,4 @@
             }
         });
 
-        // Плавна прокрутка до форми при натисканні кнопки "Замовити"
-        document.querySelector('a[href="#calculator"]').addEventListener('click', function(e) {
-            e.preventDefault();
-            document.querySelector(this.getAttribute('href')).scrollIntoView({
-                behavior: 'smooth'
-            });
-        });
-    </script>
-</body>
-</html>
+        // П
