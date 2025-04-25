@@ -337,6 +337,10 @@
         
         .customs-fields {
             display: none;
+            margin-top: 15px;
+            padding: 15px;
+            background-color: #f9f9f9;
+            border-radius: 5px;
         }
         
         .currency-selector {
@@ -607,6 +611,10 @@
                 padding: 10px;
                 font-size: 0.9rem;
             }
+            
+            .customs-fields {
+                padding: 10px;
+            }
         }
     </style>
 </head>
@@ -660,57 +668,57 @@
     <!-- Герой-секція -->
     <section class="hero" id="hero">
         <div class="hero-content">
-            <h1>Вантажні перевезення по Україні та Європі</h1>
-            <p>Безпечна та надійна доставка вашого вантажу з гарантією цілісності</p>
-            <a href="#calculator" class="btn">Замовити ▾</a>
+            <h1 data-translate="hero_title">Вантажні перевезення по Україні та Європі</h1>
+            <p data-translate="hero_subtitle">Безпечна та надійна доставка вашого вантажу з гарантією цілісності</p>
+            <a href="#calculator" class="btn" data-translate="order_btn">Замовити ▾</a>
         </div>
     </section>
     
     <!-- Про компанію -->
     <section class="about">
-        <h2>Логістична компанія DigorTrans</h2>
+        <h2 data-translate="about_title">Логістична компанія DigorTrans</h2>
         
         <div class="about-text">
-            <p>Логістична компанія «DigorTrans» спеціалізується на вантажних перевезеннях по Україні та країнах Європи. Наші основні цінності - це пунктуальність, безпека та відповідальність.</p>
+            <p data-translate="about_text1">Логістична компанія «DigorTrans» спеціалізується на вантажних перевезеннях по Україні та країнах Європи. Наші основні цінності - це пунктуальність, безпека та відповідальність.</p>
             
-            <p>Ми пропонуємо комплексні логістичні рішення для бізнесу та приватних клієнтів, гарантуючи збереження цілісності вашого вантажу та дотримання термінів доставки.</p>
+            <p data-translate="about_text2">Ми пропонуємо комплексні логістичні рішення для бізнесу та приватних клієнтів, гарантуючи збереження цілісності вашого вантажу та дотримання термінів доставки.</p>
         </div>
         
         <div class="features">
             <div class="feature-item">
-                <h3>Швидка доставка</h3>
-                <p>Оптимальні маршрути та власний сучасний автопарк дозволяють скоротити час перевезення</p>
+                <h3 data-translate="feature1_title">Швидка доставка</h3>
+                <p data-translate="feature1_text">Оптимальні маршрути та власний сучасний автопарк дозволяють скоротити час перевезення</p>
             </div>
             <div class="feature-item">
-                <h3>Страхування вантажу</h3>
-                <p>Усі перевезення застраховані від пошкоджень та втрат</p>
+                <h3 data-translate="feature2_title">Страхування вантажу</h3>
+                <p data-translate="feature2_text">Усі перевезення застраховані від пошкоджень та втрат</p>
             </div>
             <div class="feature-item">
-                <h3>Гнучкі умови</h3>
-                <p>Індивідуальний підхід до кожного клієнта та різні варіанти оплати</p>
+                <h3 data-translate="feature3_title">Гнучкі умови</h3>
+                <p data-translate="feature3_text">Індивідуальний підхід до кожного клієнта та різні варіанти оплати</p>
             </div>
             <div class="feature-item">
-                <h3>Міжнародні перевезення</h3>
-                <p>Досвід роботи з країнами ЄС</p>
+                <h3 data-translate="feature4_title">Міжнародні перевезення</h3>
+                <p data-translate="feature4_text">Досвід роботи з країнами ЄС</p>
             </div>
         </div>
         
         <div class="stats">
             <div class="stat-item">
                 <div class="stat-number">1500+</div>
-                <div>Задоволених клієнтів</div>
+                <div data-translate="stat1">Задоволених клієнтів</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">5000+</div>
-                <div>Успішних перевезень</div>
+                <div data-translate="stat2">Успішних перевезень</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">50+</div>
-                <div>Постійних партнерів</div>
+                <div data-translate="stat3">Постійних партнерів</div>
             </div>
             <div class="stat-item">
                 <div class="stat-number">20+</div>
-                <div>Країн доставки</div>
+                <div data-translate="stat4">Країн доставки</div>
             </div>
         </div>
     </section>
@@ -718,68 +726,68 @@
     <!-- Калькулятор вартості -->
     <section class="calculator" id="calculator">
         <div class="calculator-container">
-            <h2>Розрахуйте вартість перевезення</h2>
-            <p class="subtitle">Залишіть заявку і наш менеджер зв'яжеться з вами</p>
+            <h2 data-translate="calc_title">Розрахуйте вартість перевезення</h2>
+            <p class="subtitle" data-translate="calc_subtitle">Залишіть заявку і наш менеджер зв'яжеться з вами</p>
             
             <form id="delivery-form">
                 <div class="currency-selector">
                     <label>
                         <input type="radio" name="currency" value="UAH" checked> 
                         <img src="https://flagcdn.com/w20/ua.png" class="country-flag" alt="Україна">
-                        Гривня (UAH)
+                        <span data-translate="currency_uah">Гривня (UAH)</span>
                     </label>
                     <label>
                         <input type="radio" name="currency" value="EUR"> 
                         <img src="https://flagcdn.com/w20/eu.png" class="country-flag" alt="Євро">
-                        Євро (EUR)
+                        <span data-translate="currency_eur">Євро (EUR)</span>
                     </label>
                 </div>
                 
                 <div class="form-group">
-                    <label for="transport-type">Тип транспорту</label>
+                    <label for="transport-type" data-translate="transport_type">Тип транспорту</label>
                     <select id="transport-type" required>
-                        <option value="" disabled selected>Оберіть тип</option>
-                        <option value="tent">Тентований</option>
-                        <option value="grain">Зерновоз</option>
+                        <option value="" disabled selected data-translate="select_type">Оберіть тип</option>
+                        <option value="tent" data-translate="tent">Тентований</option>
+                        <option value="grain" data-translate="grain">Зерновоз</option>
                     </select>
                 </div>
                 
                 <div class="form-group">
-                    <label for="from">Звідки забрати вантаж</label>
-                    <input type="text" id="from" placeholder="Наприклад: Україна, Київ" required>
+                    <label for="from" data-translate="from_label">Звідки забрати вантаж</label>
+                    <input type="text" id="from" placeholder="" data-translate="from_placeholder" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="to">Куди доставити вантаж</label>
-                    <input type="text" id="to" placeholder="Наприклад: Польща, Варшава" required>
+                    <label for="to" data-translate="to_label">Куди доставити вантаж</label>
+                    <input type="text" id="to" placeholder="" data-translate="to_placeholder" required>
                 </div>
                 
                 <div id="customs-fields" class="customs-fields">
                     <div class="form-group">
-                        <label for="customs-clearance">Місце замитнення</label>
-                        <input type="text" id="customs-clearance" placeholder="Наприклад: Коротця, Польща">
+                        <label for="customs-clearance" data-translate="customs_clearance">Місце замитнення</label>
+                        <input type="text" id="customs-clearance" placeholder="" data-translate="customs_clearance_placeholder">
                     </div>
                     
                     <div class="form-group">
-                        <label for="customs-release">Місце розмитнення</label>
-                        <input type="text" id="customs-release" placeholder="Наприклад: Ягодин, Україна">
+                        <label for="customs-release" data-translate="customs_release">Місце розмитнення</label>
+                        <input type="text" id="customs-release" placeholder="" data-translate="customs_release_placeholder">
                     </div>
                 </div>
                 
                 <div class="form-group">
-                    <label for="name">Ваше ім'я</label>
-                    <input type="text" id="name" placeholder="Як до вас звертатися?" required>
+                    <label for="name" data-translate="name_label">Ваше ім'я</label>
+                    <input type="text" id="name" placeholder="" data-translate="name_placeholder" required>
                 </div>
                 
                 <div class="form-group">
-                    <label for="phone">Номер телефону</label>
-                    <input type="tel" id="phone" placeholder="+380 (__) ___ __ __" required>
-                    <small class="error-message" id="phone-error" style="color: red; display: none;">Будь ласка, введіть коректний номер телефону</small>
+                    <label for="phone" data-translate="phone_label">Номер телефону</label>
+                    <input type="tel" id="phone" placeholder="" required>
+                    <small class="error-message" id="phone-error" style="color: red; display: none;" data-translate="phone_error">Будь ласка, введіть коректний номер телефону</small>
                 </div>
                 
-                <button type="submit" class="submit-btn">Розрахувати вартість</button>
+                <button type="submit" class="submit-btn" data-translate="submit_btn">Розрахувати вартість</button>
                 
-                <div class="consent">
+                <div class="consent" data-translate="consent_text">
                     Натискаючи кнопку, ви погоджуєтесь з обробкою персональних даних
                 </div>
             </form>
@@ -791,20 +799,20 @@
         <div class="footer-container">
             <div class="footer-about">
                 <div class="footer-logo">DigorTrans</div>
-                <p>Надійні вантажні перевезення по Україні та Європі</p>
+                <p data-translate="footer_about">Надійні вантажні перевезення по Україні та Європі</p>
             </div>
             
             <div class="footer-links">
-                <h3>Інформація</h3>
+                <h3 data-translate="info_title">Інформація</h3>
                 <ul>
-                    <li><a href="privacy 4.html">Політика конфіденційності</a></li>
-                    <li><a href="about 4.html">Про компанію</a></li>
-                    <li><a href="services 4.html">Послуги</a></li>
+                    <li><a href="privacy 4.html" data-translate="privacy_link">Політика конфіденційності</a></li>
+                    <li><a href="about 4.html" data-translate="about_link">Про компанію</a></li>
+                    <li><a href="services 4.html" data-translate="services_link">Послуги</a></li>
                 </ul>
             </div>
             
             <div class="footer-contact">
-                <h3>Контакти</h3>
+                <h3 data-translate="contacts_title">Контакти</h3>
                 <div class="contact-info">
                     <p>
                         <a href="tel:+380980332520">
@@ -818,7 +826,7 @@
                     </p>
                     <p>
                         <a href="https://maps.google.com/?q=09100, Київська область, м. Біла Церква" target="_blank">
-                            <i class="fas fa-map-marker-alt"></i> 09100, Київська область, м. Біла Церква
+                            <i class="fas fa-map-marker-alt"></i> <span data-translate="address">09100, Київська область, м. Біла Церква</span>
                         </a>
                     </p>
                 </div>
@@ -844,7 +852,7 @@
         </div>
         
         <div class="copyright">
-            © 2025 DigorTrans. Всі права захищені
+            © 2025 DigorTrans. <span data-translate="copyright">Всі права захищені</span>
         </div>
     </footer>
 
@@ -855,25 +863,333 @@
             <div class="modal-icon">
                 <i class="fas fa-check-circle"></i>
             </div>
-            <h2>Дякуємо за заявку!</h2>
-            <p>Наш менеджер зв'яжеться з вами найближчим часом.</p>
+            <h2 data-translate="modal_title">Дякуємо за заявку!</h2>
+            <p data-translate="modal_text">Наш менеджер зв'яжеться з вами найближчим часом.</p>
             <button class="btn" style="margin-top: 20px;" id="close-modal-btn">OK</button>
         </div>
     </div>
 
     <script>
-        // Маска для телефону
-        document.getElementById('phone').addEventListener('input', function (e) {
-            let x = e.target.value.replace(/\D/g, '').match(/(\d{0,3})(\d{0,2})(\d{0,3})(\d{0,2})(\d{0,2})/);
-            e.target.value = !x[2] ? x[1] : '+380 (' + x[2] + ') ' + x[3] + (x[4] ? ' ' + x[4] : '') + (x[5] ? ' ' + x[5] : '');
-        });
-        
-        // Валідація телефону
-        function validatePhone(phone) {
-            const phoneRegex = /^\+380\s\(\d{2}\)\s\d{3}\s\d{2}\s\d{2}$/;
-            return phoneRegex.test(phone);
+        // Переклади для всіх мов
+        const translations = {
+            uk: {
+                hero_title: "Вантажні перевезення по Україні та Європі",
+                hero_subtitle: "Безпечна та надійна доставка вашого вантажу з гарантією цілісності",
+                order_btn: "Замовити ▾",
+                about_title: "Логістична компанія DigorTrans",
+                about_text1: "Логістична компанія «DigorTrans» спеціалізується на вантажних перевезеннях по Україні та країнах Європи. Наші основні цінності - це пунктуальність, безпека та відповідальність.",
+                about_text2: "Ми пропонуємо комплексні логістичні рішення для бізнесу та приватних клієнтів, гарантуючи збереження цілісності вашого вантажу та дотримання термінів доставки.",
+                feature1_title: "Швидка доставка",
+                feature1_text: "Оптимальні маршрути та власний сучасний автопарк дозволяють скоротити час перевезення",
+                feature2_title: "Страхування вантажу",
+                feature2_text: "Усі перевезення застраховані від пошкоджень та втрат",
+                feature3_title: "Гнучкі умови",
+                feature3_text: "Індивідуальний підхід до кожного клієнта та різні варіанти оплати",
+                feature4_title: "Міжнародні перевезення",
+                feature4_text: "Досвід роботи з країнами ЄС",
+                stat1: "Задоволених клієнтів",
+                stat2: "Успішних перевезень",
+                stat3: "Постійних партнерів",
+                stat4: "Країн доставки",
+                calc_title: "Розрахуйте вартість перевезення",
+                calc_subtitle: "Залишіть заявку і наш менеджер зв'яжеться з вами",
+                currency_uah: "Гривня (UAH)",
+                currency_eur: "Євро (EUR)",
+                transport_type: "Тип транспорту",
+                select_type: "Оберіть тип",
+                tent: "Тентований",
+                grain: "Зерновоз",
+                from_label: "Звідки забрати вантаж",
+                from_placeholder: "Наприклад: Україна, Київ",
+                to_label: "Куди доставити вантаж",
+                to_placeholder: "Наприклад: Польща, Варшава",
+                customs_clearance: "Місце замитнення",
+                customs_clearance_placeholder: "Наприклад: Коротця, Польща",
+                customs_release: "Місце розмитнення",
+                customs_release_placeholder: "Наприклад: Ягодин, Україна",
+                name_label: "Ваше ім'я",
+                name_placeholder: "Як до вас звертатися?",
+                phone_label: "Номер телефону",
+                phone_error: "Будь ласка, введіть коректний номер телефону",
+                submit_btn: "Розрахувати вартість",
+                consent_text: "Натискаючи кнопку, ви погоджуєтесь з обробкою персональних даних",
+                footer_about: "Надійні вантажні перевезення по Україні та Європі",
+                info_title: "Інформація",
+                privacy_link: "Політика конфіденційності",
+                about_link: "Про компанію",
+                services_link: "Послуги",
+                contacts_title: "Контакти",
+                address: "09100, Київська область, м. Біла Церква",
+                copyright: "Всі права захищені",
+                modal_title: "Дякуємо за заявку!",
+                modal_text: "Наш менеджер зв'яжеться з вами найближчим часом."
+            },
+            en: {
+                hero_title: "Freight transportation in Ukraine and Europe",
+                hero_subtitle: "Safe and reliable delivery of your cargo with integrity guarantee",
+                order_btn: "Order ▾",
+                about_title: "Logistics company DigorTrans",
+                about_text1: "The logistics company «DigorTrans» specializes in freight transportation in Ukraine and European countries. Our core values are punctuality, safety and responsibility.",
+                about_text2: "We offer comprehensive logistics solutions for businesses and private clients, guaranteeing the integrity of your cargo and compliance with delivery terms.",
+                feature1_title: "Fast delivery",
+                feature1_text: "Optimal routes and our own modern fleet allow to reduce transportation time",
+                feature2_title: "Cargo insurance",
+                feature2_text: "All shipments are insured against damage and loss",
+                feature3_title: "Flexible terms",
+                feature3_text: "Individual approach to each client and various payment options",
+                feature4_title: "International transportation",
+                feature4_text: "Experience working with EU countries",
+                stat1: "Satisfied customers",
+                stat2: "Successful shipments",
+                stat3: "Regular partners",
+                stat4: "Delivery countries",
+                calc_title: "Calculate shipping cost",
+                calc_subtitle: "Leave a request and our manager will contact you",
+                currency_uah: "Hryvnia (UAH)",
+                currency_eur: "Euro (EUR)",
+                transport_type: "Vehicle type",
+                select_type: "Select type",
+                tent: "Tented",
+                grain: "Grain truck",
+                from_label: "Pickup location",
+                from_placeholder: "Example: Ukraine, Kyiv",
+                to_label: "Delivery destination",
+                to_placeholder: "Example: Poland, Warsaw",
+                customs_clearance: "Customs clearance place",
+                customs_clearance_placeholder: "Example: Korotcza, Poland",
+                customs_release: "Customs release place",
+                customs_release_placeholder: "Example: Yahodyn, Ukraine",
+                name_label: "Your name",
+                name_placeholder: "How to address you?",
+                phone_label: "Phone number",
+                phone_error: "Please enter a valid phone number",
+                submit_btn: "Calculate cost",
+                consent_text: "By clicking the button, you agree to the processing of personal data",
+                footer_about: "Reliable freight transportation in Ukraine and Europe",
+                info_title: "Information",
+                privacy_link: "Privacy Policy",
+                about_link: "About company",
+                services_link: "Services",
+                contacts_title: "Contacts",
+                address: "09100, Kyiv region, Bila Tserkva",
+                copyright: "All rights reserved",
+                modal_title: "Thank you for your request!",
+                modal_text: "Our manager will contact you shortly."
+            },
+            lv: {
+                hero_title: "Kravu pārvadājumi Ukrainā un Eiropā",
+                hero_subtitle: "Droša un uzticama jūsu kravas piegāde ar integritātes garantiju",
+                order_btn: "Pasūtīt ▾",
+                about_title: "Loģistikas kompānija DigorTrans",
+                about_text1: "Loģistikas kompānija «DigorTrans» specializējas kravu pārvadājumos Ukrainā un Eiropas valstīs. Mūsu pamatvērtības ir precizitāte, drošība un atbildība.",
+                about_text2: "Mēs piedāvājam visaptverošus loģistikas risinājumus uzņēmumiem un privātpersonām, garantējot jūsu kravas integritāti un piegādes termiņu ievērošanu.",
+                feature1_title: "Ātra piegāde",
+                feature1_text: "Optimālie maršruti un mūsu pašu modernā autoparka ļauj samazināt pārvadājumu laiku",
+                feature2_title: "Kravas apdrošināšana",
+                feature2_text: "Visi pārvadājumi ir apdrošināti pret bojājumiem un zaudējumiem",
+                feature3_title: "Elastīgi nosacījumi",
+                feature3_text: "Individuāla pieeja katram klientam un dažādi maksājumu varianti",
+                feature4_title: "Starptautiskie pārvadājumi",
+                feature4_text: "Pieredze darbā ar ES valstīm",
+                stat1: "Apmierināti klienti",
+                stat2: "Veiksmīgi pārvadājumi",
+                stat3: "Pastāvīgie partneri",
+                stat4: "Piegādes valstis",
+                calc_title: "Aprēķiniet pārvadājumu izmaksas",
+                calc_subtitle: "Atstājiet pieprasījumu un mūsu menedžers sazināsies ar jums",
+                currency_uah: "Grivna (UAH)",
+                currency_eur: "Eiro (EUR)",
+                transport_type: "Transporta veids",
+                select_type: "Izvēlieties veidu",
+                tent: "Tenta",
+                grain: "Graudu transports",
+                from_label: "No kurienes paņemt kravu",
+                from_placeholder: "Piemēram: Ukraina, Kijeva",
+                to_label: "Kur piegādāt kravu",
+                to_placeholder: "Piemēram: Polija, Varšava",
+                customs_clearance: "Muitas iztīrīšanas vieta",
+                customs_clearance_placeholder: "Piemēram: Korotcza, Polija",
+                customs_release: "Muitas atbrīvošanas vieta",
+                customs_release_placeholder: "Piemēram: Jahodina, Ukraina",
+                name_label: "Jūsu vārds",
+                name_placeholder: "Kā jūs saukt?",
+                phone_label: "Tālruņa numurs",
+                phone_error: "Lūdzu, ievadiet derīgu tālruņa numuru",
+                submit_btn: "Aprēķināt izmaksas",
+                consent_text: "Nospiežot pogu, jūs piekrītat personas datu apstrādei",
+                footer_about: "Uzticami kravu pārvadājumi Ukrainā un Eiropā",
+                info_title: "Informācija",
+                privacy_link: "Privātuma politika",
+                about_link: "Par kompāniju",
+                services_link: "Pakalpojumi",
+                contacts_title: "Kontakti",
+                address: "09100, Kijivas apgabals, Bila Cerkva",
+                copyright: "Visas tiesības aizsargātas",
+                modal_title: "Paldies par jūsu pieprasījumu!",
+                modal_text: "Mūsu menedžers drīz sazināsies ar jums."
+            },
+            lt: {
+                hero_title: "Krovinių gabenimas Ukrainoje ir Europoje",
+                hero_subtitle: "Saugus ir patikimas jūsų krovinio pristatymas su vientisumo garantija",
+                order_btn: "Užsakyti ▾",
+                about_title: "Logistikos kompanija DigorTrans",
+                about_text1: "Logistikos kompanija «DigorTrans» specializuojasi krovinių gabenime Ukrainoje ir Europos šalyse. Mūsų pagrindinės vertybės - punktualumas, saugumas ir atsakomybė.",
+                about_text2: "Siūlome išsamius logistikos sprendimus verslui ir privačiems klientams, garantuodami jūsų krovinio vientisumą ir pristatymo terminų laikymąsi.",
+                feature1_title: "Greitas pristatymas",
+                feature1_text: "Optimalūs maršrutai ir nuosavas modernios transporto priemonės leidžia sutrumpinti gabenimo laiką",
+                feature2_title: "Krovinio draudimas",
+                feature2_text: "Visi gabenimai yra draudžiami nuo pažeidimų ir nuostolių",
+                feature3_title: "Lankstios sąlygos",
+                feature3_text: "Individualus požiūris į kiekvieną klientą ir įvairūs mokėjimo variantai",
+                feature4_title: "Tarptautiniai gabenimai",
+                feature4_text: "Patirtis dirbant su ES šalimis",
+                stat1: "Patenkintų klientų",
+                stat2: "Sėkmingų gabenimų",
+                stat3: "Nuolatinių partnerių",
+                stat4: "Pristatymo šalių",
+                calc_title: "Apskaičiuokite gabenimo kainą",
+                calc_subtitle: "Palikite užklausą ir mūsų vadybininkas su jumis susisieks",
+                currency_uah: "Grivina (UAH)",
+                currency_eur: "Euras (EUR)",
+                transport_type: "Transporto priemonės tipas",
+                select_type: "Pasirinkite tipą",
+                tent: "Tentinis",
+                grain: "Grūdų vežimėlis",
+                from_label: "Iš kur paimti krovinį",
+                from_placeholder: "Pavyzdžiui: Ukraina, Kijevas",
+                to_label: "Kur pristatyti krovinį",
+                to_placeholder: "Pavyzdžiui: Lenkija, Varšuva",
+                customs_clearance: "Muitinės išvalymo vieta",
+                customs_clearance_placeholder: "Pavyzdžiui: Korotcza, Lenkija",
+                customs_release: "Muitinės atleidimo vieta",
+                customs_release_placeholder: "Pavyzdžiui: Jahodynas, Ukraina",
+                name_label: "Jūsų vardas",
+                name_placeholder: "Kaip jus kreiptis?",
+                phone_label: "Telefono numeris",
+                phone_error: "Prašome įvesti teisingą telefono numerį",
+                submit_btn: "Apskaičiuoti kainą",
+                consent_text: "Spustelėdami mygtuką, jūs sutinkate su asmens duomenų tvarkymu",
+                footer_about: "Patikimas krovinių gabenimas Ukrainoje ir Europoje",
+                info_title: "Informacija",
+                privacy_link: "Privatumo politika",
+                about_link: "Apie kompaniją",
+                services_link: "Paslaugos",
+                contacts_title: "Kontaktai",
+                address: "09100, Kijevo sritis, Bila Cerkva",
+                copyright: "Visos teisės saugomos",
+                modal_title: "Dėkojame už jūsų užklausą!",
+                modal_text: "Mūsų vadybininkas su jumis netrukus susisieks."
+            },
+            et: {
+                hero_title: "Kaubavedu Ukrainas ja Euroopas",
+                hero_subtitle: "Ohutu ja usaldusväärne teie kauba kohaletoimetamine tervikluse garantiiga",
+                order_btn: "Telli ▾",
+                about_title: "Logistikafirma DigorTrans",
+                about_text1: "Logistikafirma «DigorTrans» spetsialiseerub kaubavedudel Ukrainas ja Euroopa riikides. Meie põhiväärtused on täpsus, ohutus ja vastutus.",
+                about_text2: "Pakkime terviklikke logistikalahendusi ettevõtetele ja erasekliendile, tagades teie kauba tervikluse ja kohaletoimetamise tähtajad.",
+                feature1_title: "Kiire kohaletoimetamine",
+                feature1_text: "Optimaalsed marsruudid ja oma kaasaegne autopark võimaldavad lühendada vedu aega",
+                feature2_title: "Kauba kindlustus",
+                feature2_text: "Kõik vedud on kindlustatud kahjude ja kaotuste vastu",
+                feature3_title: "Paindlikud tingimused",
+                feature3_text: "Individuaalne lähenemine igale kliendile ja erinevad makseviisid",
+                feature4_title: "Rahvusvahelised vedud",
+                feature4_text: "Kogemus EL riikidega töötamisel",
+                stat1: "Rahulolevaid kliente",
+                stat2: "Edukaid vedusid",
+                stat3: "Püsipartnereid",
+                stat4: "Kohaletoimetamise riike",
+                calc_title: "Arvutage vedu maksumus",
+                calc_subtitle: "Jätke päring ja meie juht võtab teiega ühendust",
+                currency_uah: "Grivna (UAH)",
+                currency_eur: "Euro (EUR)",
+                transport_type: "Transpordi tüüp",
+                select_type: "Valige tüüp",
+                tent: "Telgiga",
+                grain: "Teravedu",
+                from_label: "Kust kaubast lahti võtta",
+                from_placeholder: "Näiteks: Ukraina, Kiiev",
+                to_label: "Kuhu kaubast kohale toimetada",
+                to_placeholder: "Näiteks: Poola, Varssavi",
+                customs_clearance: "Tolli klaarimise koht",
+                customs_clearance_placeholder: "Näiteks: Korotcza, Poola",
+                customs_release: "Tolli vabastamise koht",
+                customs_release_placeholder: "Näiteks: Jahodõn, Ukraina",
+                name_label: "Teie nimi",
+                name_placeholder: "Kuidas teid kutsuda?",
+                phone_label: "Telefoninumber",
+                phone_error: "Palun sisestage korrektne telefoninumber",
+                submit_btn: "Arvutage maksumus",
+                consent_text: "Nuppu klõpsates nõustute isikuandmete töötlemisega",
+                footer_about: "Usaldusväärsed kaubavedud Ukrainas ja Euroopas",
+                info_title: "Informatsioon",
+                privacy_link: "Privaatsuspoliitika",
+                about_link: "Ettevõttest",
+                services_link: "Teenused",
+                contacts_title: "Kontaktid",
+                address: "09100, Kiievi oblast, Bila Tserkva",
+                copyright: "Kõik õigused kaitstud",
+                modal_title: "Täname teie päringu eest!",
+                modal_text: "Meie juht võtab teiega peagi ühendust."
+            }
+        };
+
+        // Поточний вибраний переклад
+        let currentLanguage = 'uk';
+
+        // Функція для зміни мови
+        function changeLanguage(lang) {
+            currentLanguage = lang;
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang] && translations[lang][key]) {
+                    if (element.tagName === 'INPUT' && element.hasAttribute('placeholder')) {
+                        element.setAttribute('placeholder', translations[lang][key]);
+                    } else if (element.tagName === 'OPTION' && element.hasAttribute('data-translate')) {
+                        element.textContent = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            // Оновлюємо вибрану мову в хедері
+            const langBtn = document.querySelector('.language-btn');
+            const langFlag = langBtn.querySelector('.language-flag');
+            const langText = langBtn.querySelector('span');
+            
+            if (lang === 'uk') {
+                langFlag.src = 'https://flagcdn.com/w20/ua.png';
+                langFlag.alt = 'Україна';
+                langText.textContent = 'UA';
+            } else if (lang === 'en') {
+                langFlag.src = 'https://flagcdn.com/w20/gb.png';
+                langFlag.alt = 'Англія';
+                langText.textContent = 'EN';
+            } else if (lang === 'lv') {
+                langFlag.src = 'https://flagcdn.com/w20/lv.png';
+                langFlag.alt = 'Латвія';
+                langText.textContent = 'LV';
+            } else if (lang === 'lt') {
+                langFlag.src = 'https://flagcdn.com/w20/lt.png';
+                langFlag.alt = 'Литва';
+                langText.textContent = 'LT';
+            } else if (lang === 'et') {
+                langFlag.src = 'https://flagcdn.com/w20/ee.png';
+                langFlag.alt = 'Естонія';
+                langText.textContent = 'ET';
+            }
         }
-        
+
+        // Обробник кліків на вибір мови
+        document.querySelectorAll('.language-dropdown a').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const lang = this.getAttribute('data-lang');
+                changeLanguage(lang);
+            });
+        });
+
         // Модальне вікно
         const modal = document.getElementById('success-modal');
         const closeModal = document.querySelector('.close-modal');
@@ -907,6 +1223,12 @@
             }
         });
         
+        // Валідація телефону
+        function validatePhone(phone) {
+            const phoneRegex = /^\+?\d{10,15}$/;
+            return phoneRegex.test(phone);
+        }
+        
         // Відправка форми з повідомленням у Telegram
         document.getElementById('delivery-form').addEventListener('submit', async function(e) {
             e.preventDefault();
@@ -931,7 +1253,8 @@
                     to: document.getElementById('to').value,
                     name: document.getElementById('name').value,
                     phone: document.getElementById('phone').value,
-                    currency: document.querySelector('input[name="currency"]:checked').value
+                    currency: document.querySelector('input[name="currency"]:checked').value,
+                    language: currentLanguage
                 };
                 
                 // Додаємо поля митниці тільки для тентованого транспорту
@@ -950,17 +1273,21 @@
                 fbq('track', 'Lead');
                 
                 // Формуємо повідомлення
-                const transportTypeText = formData.transportType === 'tent' ? 'Тентований' : 'Зерновоз';
-                let message = `Нова заявка на розрахунок:\n\n` +
-                             `Ім'я: ${formData.name}\n` +
-                             `Телефон: ${formData.phone}\n` +
-                             `Тип транспорту: ${transportTypeText}\n` +
-                             `Маршрут: ${formData.from} → ${formData.to}\n` +
-                             `Валюта: ${formData.currency}`;
+                const transportTypeText = formData.transportType === 'tent' 
+                    ? document.querySelector('option[value="tent"]').textContent 
+                    : document.querySelector('option[value="grain"]').textContent;
+                
+                let message = `*Нова заявка на розрахунок:*\n\n` +
+                             `*Мова:* ${formData.language.toUpperCase()}\n` +
+                             `*Ім'я:* ${formData.name}\n` +
+                             `*Телефон:* ${formData.phone}\n` +
+                             `*Тип транспорту:* ${transportTypeText}\n` +
+                             `*Маршрут:* ${formData.from} → ${formData.to}\n` +
+                             `*Валюта:* ${formData.currency}`;
                 
                 // Додаємо інформацію про митницю тільки для тентованого транспорту
                 if (formData.transportType === 'tent') {
-                    message += `\nМитниця: ${formData.customsClearance} → ${formData.customsRelease}`;
+                    message += `\n*Митниця:* ${formData.customsClearance} → ${formData.customsRelease}`;
                 }
                 
                 // Ваші дані Telegram бота
@@ -977,7 +1304,7 @@
                     body: JSON.stringify({
                         chat_id: chatId,
                         text: message,
-                        parse_mode: 'HTML'
+                        parse_mode: 'Markdown'
                     })
                 });
                 
@@ -1000,4 +1327,32 @@
             }
         });
 
-        // П
+        // Плавна прокрутка до форми при натисканні кнопки "Замовити"
+        document.querySelector('a[href="#calculator"]').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.querySelector(this.getAttribute('href')).scrollIntoView({
+                behavior: 'smooth'
+            });
+        });
+
+        // Ініціалізація форми при завантаженні сторінки
+        document.addEventListener('DOMContentLoaded', function() {
+            // Встановлюємо плейсхолдери для полів вводу
+            const fromInput = document.getElementById('from');
+            const toInput = document.getElementById('to');
+            const customsClearanceInput = document.getElementById('customs-clearance');
+            const customsReleaseInput = document.getElementById('customs-release');
+            const nameInput = document.getElementById('name');
+            
+            fromInput.setAttribute('placeholder', translations[currentLanguage]['from_placeholder']);
+            toInput.setAttribute('placeholder', translations[currentLanguage]['to_placeholder']);
+            customsClearanceInput.setAttribute('placeholder', translations[currentLanguage]['customs_clearance_placeholder']);
+            customsReleaseInput.setAttribute('placeholder', translations[currentLanguage]['customs_release_placeholder']);
+            nameInput.setAttribute('placeholder', translations[currentLanguage]['name_placeholder']);
+            
+            // Приховуємо поля митниці при завантаженні
+            document.getElementById('customs-fields').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
